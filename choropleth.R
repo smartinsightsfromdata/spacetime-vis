@@ -68,14 +68,14 @@ votes2011 <- read.csv('data/votes2011.csv',
 library(sp)
 library(maptools)
 
-old <- setwd(tempdir())
-download.file('http://goo.gl/TIvr4', 'mapas_completo_municipal.rar')
-system2('unrar', c('e', 'mapas_completo_municipal.rar'))
-espMap <- readShapePoly(fn="esp_muni_0109")
+# old <- setwd(tempdir())
+# download.file('http://goo.gl/TIvr4', 'mapas_completo_municipal.rar')
+# system2('unrar', c('e', 'mapas_completo_municipal.rar'))
+espMap <- readShapePoly(fn="./mapas_completo_municipal/esp_muni_0109")
 Encoding(levels(espMap$NOMBRE)) <- "latin1"
 
-provinces <- readShapePoly(fn="spain_provinces_ag_2")
-setwd(old)
+provinces <- readShapePoly(fn="./mapas_completo_municipal/spain_provinces_ag_2")
+#setwd(old)
 
 ## dissolve repeated polygons
 espPols <- unionSpatialPolygons(espMap, espMap$PROVMUN)
